@@ -15,8 +15,14 @@
             margin: 0;
         }
         form {
+
             width: 20%;
             padding: 20px;
+            width: 15%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+
         }
         .form-group input {
             width: 100%;
@@ -43,6 +49,7 @@
     </style>
 </head>
 <body>
+
 <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
@@ -70,5 +77,20 @@
     </div>
     <button type="submit" class="btn btn-primary">Tambah User</button>
 </form>
+
+    <form method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group">
+            <input type="text" name="nama" class="form-control" id="nama" aria-describedby="" placeholder="Masukkan nama Anda">
+        </div>
+        <div class="form-group">
+            <input type="text" name="npm" class="form-control" id="npm" aria-describedby="" placeholder="Masukkan NPM Anda">
+        </div>
+        <div class="form-group">
+            <input type="text" name="kelas" class="form-control" id="kelas" aria-describedby="" placeholder="Masukkan Kelas Anda">
+        </div>
+        <button type="submit" class="btn btn-primary">Tambah User</button>
+    </form>
+
 </body>
 </html>

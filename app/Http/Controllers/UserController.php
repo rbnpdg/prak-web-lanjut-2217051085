@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Kelas;
 use App\Models\UserModel;
+=======
+
 
 use Illuminate\Http\Request;
 
@@ -16,6 +19,7 @@ class UserController extends Controller
     }
     
     public function create() {
+
         return view('create_user', ['kelas' => Kelas::all(),]);
     }
 
@@ -41,5 +45,17 @@ class UserController extends Controller
             'npm' => $user->npm,
             'nama_kelas' => $user->kelas->nama_kelas ?? 'Kelas tidak ditemukan',
         ]);
+
+        return view('create_user');
+    }
+
+    public function store(Request $req) {
+        $data = [
+            'nama' => $req->input('nama'),
+            'npm' => $req->input('npm'),
+            'kelas' => $req->input('kelas'),
+        ];
+
+        return view('profile', $data);
     }
 }
