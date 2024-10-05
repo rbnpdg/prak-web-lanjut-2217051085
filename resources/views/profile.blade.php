@@ -20,9 +20,6 @@
                 <h5 class="card-title d-flex justify-content-center mt-2">{{ $nama }}</h5>
                 <h5 class="card-title d-flex justify-content-center mt-3">{{ $nama_kelas ?? 'Kelas tidak ditemukan' }}</h5>
                 <h5 class="card-title d-flex justify-content-center mt-3">{{ $npm }}</h5>
-                <h5 class="card-title d-flex justify-content-center mt-2"><?= $nama ?></h5>
-                <h5 class="card-title d-flex justify-content-center mt-3">{{ $kelas ?? 'Kelas tidak ditemukan' }}</h5>
-                <h5 class="card-title d-flex justify-content-center mt-3"><?= $npm ?></h5>
                 <a href="#" class="btn btn-primary card-link d-flex justify-content-center mt-5">Edit Profil</a>
             </div>
         </div>
