@@ -14,13 +14,20 @@
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card" style="width: 18rem; position: relative;">
             <img src="{{ asset('assets/img/bg.jpg') }}" class="bg" alt="Background Photo">
-            <img src="{{ asset('assets/img/pp.jpg') }}" class="pp" alt="Profile Photo">
+            <img src="{{ asset('upload/img/' . $user->foto) }}" class="pp" alt="PP">
 
             <div class="card-body">
+<<<<<<< Updated upstream
                 <h5 class="card-title d-flex justify-content-center mt-2">{{ $nama }}</h5>
                 <h5 class="card-title d-flex justify-content-center mt-3">{{ $nama_kelas ?? 'Kelas tidak ditemukan' }}</h5>
                 <h5 class="card-title d-flex justify-content-center mt-3">{{ $npm }}</h5>
                 <a href="#" class="btn btn-primary card-link d-flex justify-content-center mt-5">Edit Profil</a>
+=======
+                <h5 class="card-title d-flex justify-content-center mt-2">{{ $user->nama }}</h5>
+                <h5 class="card-title d-flex justify-content-center mt-3">{{ $user->nama_kelas ?? 'Kelas tidak ditemukan' }}</h5>
+                <h5 class="card-title d-flex justify-content-center mt-3">{{ $user->npm }}</h5>
+                <a href="{{ route('user.list') }}" class="btn btn-primary card-link d-flex justify-content-center mt-5">Kembali</a>
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>

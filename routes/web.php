@@ -29,4 +29,11 @@ Route::get('/user/create', [UserController::class, 'create']);
 Route::post('/user/store', [UserController::class, 'store']) -> name('user.store');
 
 //Route ke method index pada uc untuk menampilkan daftar user
+<<<<<<< Updated upstream
 Route::get('/user', [UserController::class, 'index']);
+=======
+Route::get('/user', [UserController::class, 'index']) -> name('user.list');
+
+//Route untuk show user
+Route::get('/show/{id}', [UserController::class, 'show']) -> name('user.show');
+>>>>>>> Stashed changes

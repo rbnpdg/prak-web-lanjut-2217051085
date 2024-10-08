@@ -18,7 +18,7 @@ class UserController extends Controller {
 
     public function index() { 
         $data = [ 
-            'title' => 'Create User', 
+            'title' => 'Daftar User', 
             'users' => $this->userModel->getUser(), 
         ]; 
     
@@ -69,6 +69,45 @@ class UserController extends Controller {
             'kelas_id' => $request->input('kelas_id'), 
         ]); 
         
+<<<<<<< Updated upstream
         return redirect()->to('/user'); 
+=======
+        // return redirect()->to('/user'); 
+        // Validasi input
+        $req->validate([
+            'nama' => 'required|string|max:255',
+            'npm' => 'required|string|max:255',
+            'kelas_id' => 'required|integer',
+            'foto' =>
+            'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', //Validasi untuk foto
+        ]);
+        // Handle upload foto
+        if ($req->hasFile('foto')) {
+            $foto = $req->file('foto');
+            $filename = time() . '_' . $foto->getClientOriginalName(); 
+            // $file->storeAs('upload', $filename, 'public');
+            $fotoPath = $foto -> move(('upload/img'), $filename); // Menyimpan file foto di folder 'uploads'
+        } else {
+            $fotoPath = null; // Jika tidak ada file yang diupload, set fotoPath menjadi null atau default
+        }
+
+        // Menyimpan data ke database termasuk path foto
+        $this->userModel->create([
+            'nama' => $req->input('nama'),
+            'npm' => $req->input('npm'),
+            'kelas_id' => $req->input('kelas_id'),
+            'foto' => $filename, // Menyimpan path foto
+        ]);
+
+        return redirect()->to('/user')->with('success', 'User berhasil ditambahkan');
+    }
+
+    public function show($id) {
+        $user = $this -> userModel -> getUser($id);
+
+        $data = ['title' => 'Profile', 'user' => $user,];
+
+        return view('profile', $data);
+>>>>>>> Stashed changes
     }
 }
