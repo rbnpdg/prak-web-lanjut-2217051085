@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('user.store') }}" class="form-riil" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <input type="text" name="nama" class="form-control" id="nama" aria-describedby="" placeholder="Masukkan nama Anda" >
@@ -27,6 +27,13 @@
             <div style="color: red; font-size: 12px; margin-top: -10px; margin-bottom: 10px; font-family: Arial, Helvetica, sans-serif;">{{ $message }}</div>
         @enderror
     </div>
-    <button type="submit" class="btn btn-primary">Tambah User</button>
+    <div class="form-group">
+        <input type="file" id="foto" name="foto" style="margin-bottom: 15px;"><br>
+        <label for="foto" style="color: #121212;">Foto :</label><br>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <a href="/user" class="btn-balik" style="font-size: 14px;background-color: #dc3545; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; margin-right: 10px;">Batal</a>
+        <button type="submit" class="btn btn-primary">Tambah User</button>
+    </div>
 </form>
 @endsection

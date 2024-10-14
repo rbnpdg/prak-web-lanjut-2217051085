@@ -23,17 +23,20 @@ Route::get('/', function () {
 Route::get('/profile/{nama}/{kelas}/{npm}', [UserController::class, 'profile']);
 
 //Route create user (/user/create)
-Route::get('/user/create', [UserController::class, 'create']);
+Route::get('/user/create', [UserController::class, 'create']) -> name('user.create');
 
 //Route store user baru (/user/store)
 Route::post('/user/store', [UserController::class, 'store']) -> name('user.store');
 
 //Route ke method index pada uc untuk menampilkan daftar user
-<<<<<<< Updated upstream
-Route::get('/user', [UserController::class, 'index']);
-=======
 Route::get('/user', [UserController::class, 'index']) -> name('user.list');
 
 //Route untuk show user
 Route::get('/show/{id}', [UserController::class, 'show']) -> name('user.show');
->>>>>>> Stashed changes
+
+//Route untuk edit user
+Route::put('/user/{id}', [UserController::class, 'update']) -> name('user.update');
+Route::get('/user/{id}/edit', [UserController::class, 'edit']) -> name('user.edit');
+
+//Route untuk delete user
+Route::delete('/user/{id}', [UserController::class, 'destroy']) -> name('user.delete');

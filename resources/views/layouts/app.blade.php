@@ -15,15 +15,13 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        form {
+        form-riil {
 
             width: 20%;
             padding: 20px;
-            width: 15%;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-
         }
         .form-group input {
             width: 100%;
@@ -48,7 +46,7 @@
             background-color: #4a4a4a;
         }
         .table-container {
-            display: flex;
+            margin-top: 20%;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -70,7 +68,56 @@
             background-color: #333333;
             color: #ffffff;
         }
-    </style>
+        .button-add {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .button-add:hover {
+            background-color: #0056b3;
+        }
+        .custom-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 5px;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-detail {
+            background-color: #17a2b8;
+        }
+        .btn-detail:hover {
+            background-color: #138496;
+        }
+        .btn-edit {
+            background-color: #ffc107;
+            color: black;
+        }
+        .btn-edit:hover {
+            background-color: #e0a800;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+        .pp img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+</style>
 </head>
 <body>
     @yield('content')
