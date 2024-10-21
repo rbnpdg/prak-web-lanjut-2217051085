@@ -16,6 +16,7 @@ class UserController extends Controller {
         $this->kelasModel = new Kelas();
     }
 
+    //Fungsi show list user
     public function index() { 
         $data = [ 
             'title' => 'Daftar User', 
@@ -25,11 +26,13 @@ class UserController extends Controller {
         return view('list_user', $data); 
     }
 
+    //Fungsi show profile
     public function profile($nama = "", $kelas = "", $npm = "") {
         $data = ['nama' => $nama, 'kelas' => $kelas, 'npm' => $npm];
         return view('profile', $data);
     }
     
+    //Fungsi create user
     public function create() {
         $kelasModel = new Kelas();
         $kelas = $this->kelasModel->getKelas();
@@ -39,6 +42,7 @@ class UserController extends Controller {
         return view('create_user', $data);
     }
 
+    //Fungsi save new user
     public function store(Request $req) {
 
         // $validateData = $req->validate([
@@ -78,28 +82,45 @@ class UserController extends Controller {
             'foto' =>
             'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', //Validasi untuk foto
         ]);
-        // Handle upload foto
-        $filename = null;
-        if ($req->hasFile('foto')) {
-            $foto = $req->file('foto');
-            $filename = time() . '_' . $foto->getClientOriginalName(); 
-            // $file->storeAs('upload', $filename, 'public');
-            $fotoPath = $foto -> move(('upload/img'), $filename); // Menyimpan file foto di folder 'uploads'
-        } else {
-            $fotoPath = null; // Jika tidak ada file yang diupload, set fotoPath menjadi null atau default
+        
+        // // Handle upload foto
+        // $filename = null;
+        // if ($req->hasFile('foto')) {
+        //     $foto = $req->file('foto');
+        //     $filename = time() . '_' . $foto->getClientOriginalName(); 
+        //     // $file->storeAs('upload', $filename, 'public');
+        //     $fotoPath = $foto -> move(('upload/img'), $filename); // Menyimpan file foto di folder 'uploads'
+        // } else {
+        //     $fotoPath = null; // Jika tidak ada file yang diupload, set fotoPath menjadi null atau default
+        // }
+
+        //Upload foto
+        if($req->hasFile('foto')) {
+            $file = $req->file('foto');
+            $filename = time() . '_' . $file->getClientOriginalName(); 
+            $file->storeAs('upload', $filename); // Menyimpan file ke storage  
+
+            // Simpan data user ke database 
+            $this->userModel->create([ 
+                'nama' => $req->input('nama'), 
+                'npm' => $req->input('npm'), 
+                'kelas_id' => $req->input('kelas_id'), 
+                'foto' => $filename, // Menyimpan nama file ke database 
+            ]);
         }
 
-        // Menyimpan data ke database termasuk path foto
-        $this->userModel->create([
-            'nama' => $req->input('nama'),
-            'npm' => $req->input('npm'),
-            'kelas_id' => $req->input('kelas_id'),
-            'foto' => $filename, // Menyimpan path foto
-        ]);
+        // // Menyimpan data ke database termasuk path foto
+        // $this->userModel->create([
+        //     'nama' => $req->input('nama'),
+        //     'npm' => $req->input('npm'),
+        //     'kelas_id' => $req->input('kelas_id'),
+        //     'foto' => $filename, // Menyimpan path foto
+        // ]);
 
         return redirect()->to('/user')->with('success', 'User berhasil ditambahkan');
     }
 
+    //Fungsi show profile
     public function show($id) {
         $user = $this -> userModel -> getUser($id);
 
@@ -108,6 +129,7 @@ class UserController extends Controller {
         return view('profile', $data);
     }
 
+    //Fungsi show edit profile
     public function edit($id) {
         $user = UserModel::findOrFail($id);
         $kelasModel = new Kelas();
@@ -117,6 +139,7 @@ class UserController extends Controller {
         return view('edit', compact('user', 'kelas', 'title'));
     }
 
+    //Fungsi save edit profile
     public function update(Request $req, $id) {
         $user = UserModel::findOrFail($id);
 
@@ -135,6 +158,7 @@ class UserController extends Controller {
         return redirect()->route('user.list')->with('succcess', 'Berhasil update user');
     }
 
+    //Fungsi delete user
     public function destroy($id) {
         $user = UserModel::findOrFail($id);
         $user->delete();

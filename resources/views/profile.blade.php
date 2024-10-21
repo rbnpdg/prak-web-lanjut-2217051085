@@ -14,7 +14,7 @@
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card" style="width: 18rem; position: relative;">
             <img src="{{ asset('assets/img/bg.jpg') }}" class="bg" alt="Background Photo">
-            <img src="{{ asset('upload/img/' . $user->foto) }}" class="pp" alt="PP">
+            <img src="{{ asset('storage/upload/' . $user->foto) }}" class="pp" alt="PP">
 
             <div class="card-body">
                 <h5 class="card-title d-flex justify-content-center mt-2">{{ $user->nama }}</h5>
