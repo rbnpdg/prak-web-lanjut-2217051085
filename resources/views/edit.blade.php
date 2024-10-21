@@ -29,7 +29,7 @@
         <input type="file" id="foto" name="foto" style="margin-bottom: 15px;"><br>
         <label for="foto" style="color: #121212;">Foto :</label><br>
         @if($user->foto)
-        <img src="{{ asset('upload/img/' . $user->foto) }}" alt="pp" style="width: 100px; height: auto;">
+        <img src="{{ asset('storage/upload/' . $user->foto) }}" alt="pp" style="width: 100px; height: auto;">
         @endif
     </div>
     <div style="display: flex; justify-content: space-between; margin-top: 20px;">

@@ -22,7 +22,7 @@
                 <td>{{ $user['nama'] }}</td> 
                 <td>{{ $user['npm'] }}</td> 
                 <td>{{ $user['nama_kelas'] }}</td>
-                <td class="pp"><img src="{{ asset('upload/img/' . $user->foto) }}" class="pp" alt="PP"></td>
+                <td class="pp"><img src="{{ asset('storage/upload/' . $user->foto) }}" class="pp" alt="PP"></td>
                 <td>
                    <form action="{{ route('user.show', $user->id) }}" method="GET" style="display:inline-block;">
                       <button type="submit" class="custom-btn btn-detail">View</button>
