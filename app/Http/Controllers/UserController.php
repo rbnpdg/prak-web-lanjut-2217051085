@@ -28,7 +28,7 @@ class UserController extends Controller {
 
     //Fungsi show profile
     public function profile($nama = "", $kelas = "", $npm = "") {
-        $data = ['nama' => $nama, 'kelas' => $kelas, 'npm' => $npm];
+        $data = ['nama' => $nama, 'kelas' => $kelas, 'npm' => $npm, 'jurusan' => $jurusan, 'semester' => $semester];
         return view('profile', $data);
     }
     
@@ -79,6 +79,8 @@ class UserController extends Controller {
             'nama' => 'required|string|max:255',
             'npm' => 'required|string|max:255',
             'kelas_id' => 'required|integer',
+            'jurusan' => 'required|string|max:255',
+            'semester' => 'required|integer|max:255',
             'foto' =>
             'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', //Validasi untuk foto
         ]);
@@ -105,6 +107,8 @@ class UserController extends Controller {
                 'nama' => $req->input('nama'), 
                 'npm' => $req->input('npm'), 
                 'kelas_id' => $req->input('kelas_id'), 
+                'jurusan' => $req->input('jurusan'), 
+                'semester' => $req->input('semester'), 
                 'foto' => $filename, // Menyimpan nama file ke database 
             ]);
         }
@@ -146,10 +150,12 @@ class UserController extends Controller {
         $user->nama = $req->nama;
         $user->npm = $req->npm;
         $user->kelas_id = $req->kelas_id;
+        $user->jurusan = $req->jurusan;
+        $user->semester = $req->semester;
 
         if($req->hasFile('foto')) {
             $fileName = time() . '_' . $req->foto->getClientOriginalName();
-            $req->foto->move(public_path('upload/img'), $fileName);
+            $req->foto->move(public_path('storage/upload/'), $fileName);
             $user->foto = $fileName;
         }
 
