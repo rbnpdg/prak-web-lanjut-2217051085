@@ -20,6 +20,8 @@
                 <h5 class="card-title d-flex justify-content-center mt-2">{{ $user->nama }}</h5>
                 <h5 class="card-title d-flex justify-content-center mt-3">{{ $user->nama_kelas ?? 'Kelas tidak ditemukan' }}</h5>
                 <h5 class="card-title d-flex justify-content-center mt-3">{{ $user->npm }}</h5>
+                <h5 class="card-title d-flex justify-content-center mt-3">{{ $user->jurusan }}</h5>
+                <h5 class="card-title d-flex justify-content-center mt-3">{{ $user->semester }}</h5>
                 <a href="{{ route('user.list') }}" class="btn btn-primary card-link d-flex justify-content-center mt-5">Kembali</a>
             </div>
         </div>

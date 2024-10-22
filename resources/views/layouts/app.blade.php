@@ -105,12 +105,6 @@
         .btn-edit:hover {
             background-color: #e0a800;
         }
-        .btn-delete {
-            background-color: #dc3545;
-        }
-        .btn-delete:hover {
-            background-color: #c82333;
-        }
         .pp img {
             width: 50px;
             height: 50px;
@@ -118,6 +112,7 @@
             object-fit: cover;
         }
 </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
     @yield('content')

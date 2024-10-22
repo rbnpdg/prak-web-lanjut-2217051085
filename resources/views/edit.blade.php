@@ -16,6 +16,18 @@
         @enderror
     </div>
     <div class="form-group">
+        <input type="text" name="jurusan" class="form-control" id="jurusan" value="{{ old('npm', $user->jurusan) }}" >
+        @error('jurusan')
+            <div style="color: red; font-size: 12px; margin-top: -10px; margin-bottom: 10px; font-family: Arial, Helvetica, sans-serif;">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-group">
+        <input type="text" name="semester" class="form-control" id="semester" value="{{ old('npm', $user->semester) }}">
+        @error('semester')
+            <div style="color: red; font-size: 12px; margin-top: -10px; margin-bottom: 10px; font-family: Arial, Helvetica, sans-serif;">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-group">
         <select name="kelas_id" id="kelas_id" style="width: 100%; padding: 10px; margin-bottom: 15px;">
             @foreach ($kelas as $kelasItem)
                 <option value="{{ $kelasItem->id }}" {{ $kelasItem->id == $user->kelas_id ? 'selected' : '' }}>{{ $kelasItem->nama_kelas }}</option>
